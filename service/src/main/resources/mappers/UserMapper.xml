@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxlg.app.dao.UserDao">
+    <sql id="user">
+        id ,name,password
+    </sql>
+
+    <select id="findByNameAndPassword" parameterType="map" resultType="com.jxlg.app.entity.User">
+        select <include refid="user"/>
+        from user  WHERE
+        name=#{name} and password=#{password}
+    </select>
+
+    <insert id="add" parameterType="map">
+        insert into user(name,password) values(#{name},#{password})
+    </insert>
+</mapper>
